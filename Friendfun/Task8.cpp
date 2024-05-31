@@ -2,27 +2,37 @@
 
 #include <iostream>
 using namespace std;
+class B;
 class A{
   private:
     int a;
-    public:
-     A(int a):a(a){}
-    //  friend void swap_data(A& obj);
+  public:
+    A(int a):a(a){}
+    friend void swap_data(A& obj, B& obj1);
 
 };
 
 class B{
   private:
     int b;
-    public:
-     B(int a):b(b){}
-     friend void swap_data(A& obj,B& obj1);
+  public:
+    B(int b):b(b){}
+    friend void swap_data(A& obj, B& obj1);
 };
 
 void swap_data(A& obj,B& obj1){
+    cout << "Before swapping:" << endl;
+    cout << "A value: " << obj.a << endl;
+    cout << "B value: " << obj1.b << endl;
+
     int temp=obj.a;
     obj.a=obj1.b;
     obj1.b=temp;
+
+    cout << "After swapping:" << endl;
+    cout << "A value: " << obj.a << endl;
+    cout << "B value: " << obj1.b << endl;
+
 }
 
 int main() {
@@ -30,15 +40,7 @@ int main() {
     A obj1(4);
     B obj2(5);
 
-    cout << "Before swapping:" << endl;
-    cout << "A value: " << obj1.a << endl;
-    cout << "B value: " << obj2.b << endl;
-
     swap_data(obj1, obj2);
-
-    cout << "After swapping:" << endl;
-    cout << "A value: " << obj1.a << endl;
-    cout << "B value: " << obj2.b << endl;
     return 0;
 }
 

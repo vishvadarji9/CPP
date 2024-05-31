@@ -3,7 +3,7 @@
 #include<iostream>
 using namespace std;
 
-class A;
+class A;    //Forward Declaration
 
 class B{
     private:
